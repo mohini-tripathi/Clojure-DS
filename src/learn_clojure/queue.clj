@@ -35,6 +35,7 @@
                 (enqueue 1)
                 (enqueue 2)
                 (enqueue 3)
+                (enqueue 4)
+                (dequeue)
                 ))
 (println "F-QUEUE" fqueue)
-(empty? fqueue)

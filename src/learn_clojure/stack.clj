@@ -31,7 +31,9 @@
 (def st1 (stack))
 (def fstack (-> st1
                 (push 1)
+                (push 2)
+                (push 3)
+                (push 4)
                 (pop)))
 ;; (def fstack  (println (= (s-count (push st1 1)) 0)))
-
-(empty? fstack)
+(println fstack)
