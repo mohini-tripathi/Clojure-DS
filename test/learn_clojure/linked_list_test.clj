@@ -1,6 +1,6 @@
 (ns learn-clojure.linked-list-test
   (:require 
-   [clojure.test :refer [deftest are testing]]
+   [clojure.test :refer [deftest is are testing]]
    [learn-clojure.linked-list :as list]))
 
 
@@ -24,8 +24,7 @@
 (deftest test-linked-list
   (let [list-1 1]
     (testing "create an empty list - linked-list"
-      (are [expected got] (= expected got)
-        1 1))
+      (is (= {} (list/linked-list))))
     (testing "add node to the last list - append"
       (are [expected got] (= expected got)
         1 1))

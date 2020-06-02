@@ -3,6 +3,7 @@
 
 (defprotocol Stack
   "Stack Protocol"
+  ;; :extend-via-metadata true  //ASK 
   (push [stack value] "inserts a value in stack")
   (pop [stack] "pop the value from stack")
   (peek [stack] "returns the top calue of a stack")
