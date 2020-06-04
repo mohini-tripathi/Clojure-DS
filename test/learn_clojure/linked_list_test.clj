@@ -25,10 +25,32 @@
         nil (list/next node-1)))))
 
 (deftest test-linked-list
-  (let [list-1 (list/empty-linked-list)
-        head (list/head list-1)
-        tail (list/tail list-1)]
+  (let [list-1 (list/l-list)
+        node-1 (list/node 1 nil)
+        node-2 (list/node 2 1)
+        list-2 (list/l-list node-1 node-2)
+        head-1 (list/head list-1)
+        tail-1 (list/tail list-1)
+        head-2 (list/head list-2)
+        tail-2 (list/tail list-2)
+        value 3
+        p-new-node (list/node value head-2)
+        a-new-node (list/node value nil) ;;2nd last node??
+        prepend-1 (list/prepend list-2 value)
+        append-1 (list/append list-2 value)
+        p-new-list (list/l-list p-new-node tail-2)
+        a-new-list (list/l-list head-2 a-new-node)]
     (testing "empty-linked-list"
     (are [expected got] (= expected got)
-       nil head
-       nil tail))))
+       nil head-1
+       nil tail-1))
+    (testing "non-empty-linked-list"
+      (are [expected got] (= expected got)
+        node-1 head-2
+        node-2 tail-2))
+    (testing "prepend"
+      (are [expected got] (= expected got)
+        p-new-list prepend-1))
+    (testing "append"
+      (are [expected got] (= expected got)
+        a-new-list append-1))))

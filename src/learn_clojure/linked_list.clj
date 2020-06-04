@@ -1,5 +1,5 @@
 (ns learn-clojure.linked-list
-  (:refer-clojure :exclude [next]))
+  (:refer-clojure :exclude [next list]))
 
 (defprotocol Node
   "Node for the list"
@@ -30,31 +30,35 @@
   List
   (head [_] _head)
   (tail [_] _tail)
-  (prepend [value list]
+  (prepend [list value]
     (let [new-node (node value (head list))]
       (->ListImpl new-node (tail list))))
-  (append [value list]
+  (append [list value]
     (let [new-node (node value nil)]
       (->ListImpl (head list) new-node))))
 
 
 
-(defn _list 
+(defn l-list 
   ([] 
-  (->ListImpl nil nil)) 
+  (->ListImpl nil nil))
   ([head tail]
    (->ListImpl head tail)))
 
+(def l1 (l-list))
+(def f-list (prepend l1 1))
 
 
-(defn _prepend [value list]
-  (let [new-node (node value (head list))]
-    (->ListImpl new-node (tail list))))
+(println f-list)
 
-(defn _append [value list]
-(let [new-node (node value nil)]
-  (->ListImpl (head list) new-node)))
+;; (defn _prepend [value _list]
+;;   (let [new-node (node value (head list))]
+;;     (->ListImpl new-node (tail list))))
 
-(_prepend 1 (_list 2 3))
-(_append 3 (_list 1 2))
+;; (defn _append [value _list]
+;; (let [new-node (node value nil)]
+;;   (->ListImpl (head list) new-node)))
+
+;; (_prepend 1 (l-list 2 3))
+;; (_append 3 (l-list 1 2))
 
