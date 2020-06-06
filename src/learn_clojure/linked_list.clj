@@ -1,11 +1,11 @@
 (ns learn-clojure.linked-list
-  (:refer-clojure :exclude [next list reverse]))
+  (:refer-clojure :exclude [next list reverse empty?]))
 
 (defprotocol Node
   "Node for the list"
   (data [node] "Returns data field of the node")
   (next [node] "Returns next field of the node")
-  (node-empty? [node] "Returns true when the node is empty"))
+  (empty? [node] "Returns true when the node is empty"))
 
 (defrecord NodeImpl [_data _next]
   Node
@@ -30,13 +30,6 @@
         (->NodeImpl dat (node (next dat) nxt)))
     (->NodeImpl dat nxt))))
 
-;; [dat nxt]
-;;    (if (node? dat)
-;;      (if (nil? (next dat))
-;;        (->NodeImpl (data dat) nxt)
-;;        (->NodeImpl (data dat) (node (next dat) nxt)))
-;;      (->NodeImpl dat nxt)
-
 
 (defprotocol List
   "Returns Linked List"
@@ -55,9 +48,11 @@
 
 (defrecord ListImpl [_head _tail]
   List
-  (head [_] _head)
+  (head [_] 
+        _head)
   
-  (tail [_] _tail)
+  (tail [_] 
+        _tail)
   
   (prepend [list value]
     (let [new-node (node value (head list))]
@@ -65,7 +60,17 @@
   
   (append [list value]
     (let [new-node (node value nil)]
-      (->ListImpl new-node (tail list)))))
+      (if (nil? (head list))
+        (->ListImpl new-node new-node)
+        (if (= (head list) (tail list))
+               (->ListImpl (head list) new-node)
+          (->ListImpl (node (head list) (tail list)) new-node)))))
+  
+  (traverse [list]
+            (head list)))
+
+;ALGORITHM OF TRAVERSAL
+;return the value of
 
 (defn l-list
   ([]
@@ -73,32 +78,19 @@
   ([head tail]
    (->ListImpl head tail)))
 
-
-;; (def l1 (l-list))
-;; (def f-list (prepend l1 1))
-
-
-;; (println f-list)
-
-(def n1 (node 3))
-(def n2 (node 4))
+(def n1 (node))
+(def n2 (node 4 3))
 (def n3 (node n1 n2))
 
-; 1->2 apple banana kuku 
-; Write append & traversal
-(node n3)
-;; (data n3 )
+(def l1 (l-list 1 2))
+(append (append l1 4) 3)
+
+(head l1)
 
 ;; (println n3)
 
-;; (defn _prepend [value _list]
-;;   (let [new-node (node value (head list))]
-;;     (->ListImpl new-node (tail list))))
 
-;; (defn _append [value _list]
-;; (let [new-node (node value nil)]
-;;   (->ListImpl (head list) new-node)))
 
-;; (_prepend 1 (l-list 2 3))
-;; (_append 3 (l-list 1 2))
+
+
 
