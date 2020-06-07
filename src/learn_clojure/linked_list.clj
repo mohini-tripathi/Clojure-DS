@@ -59,33 +59,61 @@
       (->ListImpl new-node (tail list))))
   
   (append [list value]
-    (let [new-node (node value nil)]
+    (let [new-node (node value)]
       (if (nil? (head list))
         (->ListImpl new-node new-node)
-        (if (= (head list) (tail list))
-               (->ListImpl (head list) new-node)
-          (->ListImpl (node (head list) (tail list)) new-node)))))
+        (->LinkedListImpl (node (head list) new-node) new-node))))
+  
   
   (traverse [list]
-            (head list)))
+                (loop [new-node (head list)]
+                  (println (data new-node))
+                  (if (= (next new-node) nil)
+                    (println "End of list")
+                    (recur (next new-node))))))
 
-;ALGORITHM OF TRAVERSAL
-;return the value of
+; ALGORITHM FOR TRAVERSE METHOD
+; initialize new-node = head of list
+; update new-node = next of (head list)
+; until next of new-node is nil
+
 
 (defn l-list
   ([]
    (->ListImpl nil nil))
-  ([head tail]
-   (->ListImpl head tail)))
+  ([_head _tail]
+   (if (and (node? _head) (node? _tail))
+     (->ListImpl _head _tail)
+     (let [new-head-node (node _head (node _tail))
+           new-tail-node (node _tail)]
+       (->ListImpl new-head-node new-tail-node)))))
 
 (def n1 (node))
 (def n2 (node 4 3))
 (def n3 (node n1 n2))
 
-(def l1 (l-list 1 2))
-(append (append l1 4) 3)
+(def l1 (l-list 8 9))
+(def l2 (l-list 1 2))
 
-(head l1)
+(def dlist (-> l1
+               (prepend 7)
+               (prepend 6)
+               (prepend 5)
+               (prepend 4)
+               (prepend 3)
+               (prepend 2)
+               (prepend 1)))
+
+(def flist (-> l2
+               (append 3)
+               (append 4)
+               (append 5)
+               (append 6)
+               (append 7)
+               (append 8)
+               (append 9)))
+
+(traverse flist)
 
 ;; (println n3)
 
