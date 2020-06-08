@@ -62,7 +62,10 @@
     (let [new-node (node value)]
       (if (nil? (head list))
         (->ListImpl new-node new-node)
-        (->LinkedListImpl (node (head list) new-node) new-node))))
+        (if (= (head list) (tail list))
+          (->ListImpl (head list) new-node)
+          (->ListImpl (node (head list) (tail list)) new-node))
+        )))
   
   
   (traverse [list]
@@ -105,15 +108,8 @@
                (prepend 1)))
 
 (def flist (-> l2
-               (append 3)
-               (append 4)
-               (append 5)
-               (append 6)
-               (append 7)
-               (append 8)
-               (append 9)))
+               (append 3)))
 
-(traverse flist)
 
 ;; (println n3)
 
