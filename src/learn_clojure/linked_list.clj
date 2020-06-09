@@ -27,7 +27,7 @@
   (if (node? dat)
       (if (nil? (next dat))
         (->NodeImpl (data dat) nxt)  ;using 'dat' as an argument will pass a node itself where as (data dat) will pass just the values
-        (->NodeImpl dat (node (next dat) nxt)))
+        (->NodeImpl (data dat) (node (next dat) nxt)))
     (->NodeImpl dat nxt))))
 
 
@@ -58,14 +58,12 @@
     (let [new-node (node value (head list))]
       (->ListImpl new-node (tail list))))
   
-  (append [list value]
-    (let [new-node (node value)]
-      (if (nil? (head list))
-        (->ListImpl new-node new-node)
-        (if (= (head list) (tail list))
-          (->ListImpl (head list) new-node)
-          (->ListImpl (node (head list) (tail list)) new-node))
-        )))
+    (append
+     [list val]
+     (let [new-node (node val)]
+       (if (nil? (head list))
+         (->ListImpl new-node new-node)
+         (->ListImpl (node (head list) new-node) new-node))))
   
   
   (traverse [list]
@@ -108,9 +106,10 @@
                (prepend 1)))
 
 (def flist (-> l2
-               (append 3)))
+               (append 7)
+               (append 8)))
 
-
+(traverse flist)
 ;; (println n3)
 
 
