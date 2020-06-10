@@ -44,7 +44,10 @@
   (delete-all [list] "Deletes the list")
   (list->vector [list] "Converts list to vectors")
   (vector->list [vector] "Converts vectors to list")
-  (reverse [list] "Returns a reversed list"))
+  (reverse [list] "Returns a reversed list")
+  (create-linkedlist [this] "returns list with multiple argurment"))
+
+
 
 (defrecord ListImpl [_head _tail]
   List
@@ -71,30 +74,38 @@
                   (println (data new-node))
                   (if (= (next new-node) nil)
                     (println "End of list")
-                    (recur (next new-node))))))
+                    (recur (next new-node)))))
+  
+  (list->vector [list]
+                (loop [new-node (head list)
+                       new-vector []]
+                  (if (nil? new-node)
+                    new-vector
+                    (recur (next new-node) (conj new-vector (data new-node)))))))
 
 ; ALGORITHM FOR TRAVERSE METHOD
 ; initialize new-node = head of list
 ; update new-node = next of (head list)
 ; until next of new-node is nil
 
-
-(defn l-list
+(defn empty-list
   ([]
-   (->ListImpl nil nil))
-  ([_head _tail]
-   (if (and (node? _head) (node? _tail))
-     (->ListImpl _head _tail)
-     (let [new-head-node (node _head (node _tail))
-           new-tail-node (node _tail)]
-       (->ListImpl new-head-node new-tail-node)))))
+   (->ListImpl nil nil)))
+
+  (defn linkedlist ([& args]
+                     (loop [curr (first args)
+                            rst (rest args)
+                            nlist (->ListImpl nil nil)]
+                       (if (nil? curr)
+                         nlist
+                         (recur (first rst) (rest rst) (prepend nlist curr))))))
+
 
 (def n1 (node))
 (def n2 (node 4 3))
 (def n3 (node n1 n2))
-
-(def l1 (l-list 8 9))
-(def l2 (l-list 1 2))
+(def l1 (empty-list))
+(def l2 (empty-list))
 
 (def dlist (-> l1
                (prepend 7)
@@ -106,12 +117,16 @@
                (prepend 1)))
 
 (def flist (-> l2
+               (append 3)
+               (append 4)
+               (append 5)
+               (append 6)
                (append 7)
-               (append 8)))
+               (append 8)
+               (append 9)))
 
-(traverse flist)
-;; (println n3)
 
+(list->vector dlist)
 
 
 
