@@ -5,21 +5,34 @@
    [learn-clojure.linked-list :as list]))
 
 (defprotocol Stack
-  (empty? [stack]
+  (empty? 
+   [stack]
     "Returns true if stack is empty")
-  (peek [stack]
+  
+  (peek 
+   [stack]
     "Returns the value at top of the stack")
-  (push [stack val]
+  
+  (push 
+   [stack val]
     "Add value at the top of the stack")
-  (pop [stack]
+  
+  (pop 
+   [stack]
     "Removes the element from the top of the stack")
-  (reverse [stack]
+  
+  (reverse 
+   [stack]
     "Returns a new stack by reversing the values of the stack")
-  (stack->vector [stack]
+  
+  (stack->vector 
+   [stack]
     "Returns the vector of the stack values"))
+
 
 (defrecord StackImpl [_list]
   Stack
+  
   (empty?
     [_]
     (list/empty? _list))
@@ -46,6 +59,7 @@
   (stack->vector
     [_]
     (list/list->vector _list)))
+
 
 (defn stack
   [& args]
