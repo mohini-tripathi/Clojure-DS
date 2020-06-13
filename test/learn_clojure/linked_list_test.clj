@@ -1,82 +1,161 @@
 (ns learn-clojure.linked-list-test
-  (:require 
+  (:require
    [clojure.test :refer [deftest are testing]]
    [learn-clojure.linked-list :as list]))
 
-(deftest test-linked-list-node
+(deftest test-linkedlist
+  (let [list-1 (list/linkedlist)]
+    (testing "Empty Linked List"
+      (are [expected got] (= expected got)
+        nil (list/head list-1)
+        nil (list/tail list-1)))))
+
+(deftest test-linkedlist-insert
   (let [node-data-1 1
-        node-1 (list/node node-data-1)
         node-data-2 2
-        node-2 (list/node node-data-2 node-1)
         node-data-3 3
-        node-3 (list/node node-data-3 node-2)
-        node-4 (list/node node-1)
-        node-5 (list/node node-2 node-3)]
-    
-  (testing "node?"
+        node-data-4 4
+        list-1 (list/linkedlist)
+        list-2 (-> list-1
+                   (list/prepend node-data-1)
+                   (list/prepend node-data-2)
+                   (list/prepend node-data-3))
+        list-3 (-> list-1 ;; 1->2->3
+                   (list/append node-data-1)
+                   (list/append node-data-2)
+                   (list/append node-data-3))
+        list-4 (-> list-1 ;; 2->1->3->4
+                   (list/prepend node-data-1)
+                   (list/prepend node-data-2)
+                   (list/append node-data-3)
+                   (list/append node-data-4))]
+    (testing "Prepend data to the list"
+      (are [expected got] (= expected got)
+        node-data-3 (-> list-2
+                         (list/head)
+                         (list/data))
+        node-data-2 (-> list-2
+                         (list/head)
+                         (list/next)
+                         (list/data))
+        node-data-1 (-> list-2
+                         (list/tail)
+                         (list/data))
+        node-data-4 (-> list-2
+                         (list/prepend node-data-4)
+                         (list/head)
+                         (list/data))))
+    (testing "Append data in the list"
+      (are [expected got] (= expected got)
+        node-data-1 (-> list-3
+                         (list/head)
+                         (list/data))
+        node-data-3 (-> list-3
+                         (list/tail)
+                         (list/data))
+        node-data-4 (-> list-3
+                         (list/append node-data-4)
+                         (list/tail)
+                         (list/data))
+        node-data-2 (-> list-3
+                         (list/head)
+                         (list/next)
+                         (list/data))))
+    (testing "Appending and prepending to the list"
+      (are [expected got] (= expected got)
+        node-data-4 (-> list-4 ; 2->1->3->4
+                         (list/tail)
+                         (list/data))
+        node-data-2 (-> list-4
+                         (list/head)
+                         (list/data))))))
 
+(deftest test-linkedlist-search
+  (let [node-data-1 1
+        node-data-2 2
+        node-data-3 3
+        node-data-4 4
+        list-1 (list/linkedlist)
+        list-2 (-> list-1
+                   (list/prepend node-data-1)
+                   (list/prepend node-data-2)
+                   (list/prepend node-data-3))
+        list-3 (-> list-1 ;; 1->2->3
+                   (list/append node-data-1)
+                   (list/append node-data-2)
+                   (list/append node-data-3))
+        list-4 (-> list-1 ;; 2->1->3->4
+                   (list/prepend node-data-1)
+                   (list/prepend node-data-2)
+                   (list/append node-data-3)
+                   (list/append node-data-4))]
+    (testing "searching data in a list"
       (are [expected got] (= expected got)
-        true (list/node? node-3)
-        false (list/node? node-data-1)))    
-    
-  (testing "create node from data"
-    
-    (are [expected got] (= expected got)
-      node-data-1 (list/data node-1)
-      nil (list/next node-1)
-      node-data-2 (list/data node-2)
-      node-1 (list/next node-2)
-      node-data-3 (list/data node-3)
-      node-2 (list/next node-3)))
-    
-    (testing "create node from node"
-      (are [expected got] (= expected got)
-        true (list/node? node-4)
-        true (list/node? node-5)))
-    
-    (testing "link nodes together"
-      
-      (are [expected got] (= expected got)
-        node-data-2 (list/data node-2)
-        node-1 (list/next node-2)
-        nil (list/next node-1)))))
+        node-data-2 (-> list-4
+                         (list/search node-data-2)
+                         (list/data))
+        nil (-> list-3
+                (list/search node-data-4))
+        node-data-1 (-> list-2
+                         (list/search node-data-1)
+                         (list/data))))))
 
+(deftest test-linkedlist-delete
+  (let [node-data-1 1
+        node-data-2 2
+        node-data-3 3
+        list-1 (list/linkedlist)
+        list-2 (-> list-1
+                   (list/prepend node-data-1)
+                   (list/prepend node-data-2)
+                   (list/prepend node-data-3))]
+    (testing "delete head of the list"
+      (are [expected got] (= expected got)
+        true (-> list-2
+                 (list/delete-head)
+                 (list/delete-head)
+                 (list/delete-head)
+                 (list/empty?))
+        node-data-1 (-> list-2
+                         (list/delete-head)
+                         (list/delete-head)
+                         (list/head)
+                         (list/data))))
+    (testing "delete tail of the list"
+      (are [expected got] (= expected got)
+        true (-> list-2
+                 (list/delete-tail)
+                 (list/delete-tail)
+                 (list/delete-tail)
+                 (list/empty?))
+        node-data-3 (-> list-2
+                         (list/delete-tail)
+                         (list/delete-tail)
+                         (list/head)
+                         (list/data))))))
 
-(deftest test-linked-list
-  
-  (let [list-1 (list/l-list)
-        node-1 (list/node 1 nil)
-        node-2 (list/node 2 1)
-        list-2 (list/l-list node-2 node-1)
-        head-1 (list/head list-1)
-        tail-1 (list/tail list-1)
-        head-2 (list/head list-2)
-        tail-2 (list/tail list-2)
-        value 3
-        p-new-node (list/node value head-2)
-        a-new-node (list/node value nil)
-        prepend-1 (list/prepend list-2 value)
-        append-1 (list/append list-2 value)
-        p-new-list (list/l-list p-new-node tail-2)]
-    
-    (testing "empty-linked-list"
-      
-    (are [expected got] (= expected got)
-       nil head-1
-       nil tail-1))
-    
-    (testing "non-empty-linked-list"
-      
+(deftest test-linkedlist-reverselist
+  (let [node-data-1 1
+        node-data-2 2
+        node-data-3 3
+        node-data-4 4
+        list-1 (list/linkedlist)
+        list-2 (-> list-1
+                   (list/prepend node-data-1)
+                   (list/prepend node-data-2)
+                   (list/prepend node-data-3))
+        list-3 (-> list-1 ;; 1->2->3
+                   (list/append node-data-1)
+                   (list/append node-data-2)
+                   (list/append node-data-3))
+        list-4 (-> list-1 ;; 2->1->3->4
+                   (list/prepend node-data-1)
+                   (list/prepend node-data-2)
+                   (list/append node-data-3)
+                   (list/append node-data-4))]
+    (testing "revering the list"
       (are [expected got] (= expected got)
-        node-1 tail-2
-        node-2 head-2))
-    
-    (testing "prepend"
-      
-      (are [expected got] (= expected got)
-        p-new-list prepend-1))
-    
-    (testing "append"
-      
-      (are [expected got] (= expected got)
-        a-new-node (list/tail append-1)))))
+        list-1 (list/reverselist (list/reverselist list-1))
+        list-2 (list/reverselist (list/reverselist list-2))
+        list-3 (list/reverselist (list/reverselist list-3))
+        list-4 (list/reverselist (list/reverselist list-4))))))
