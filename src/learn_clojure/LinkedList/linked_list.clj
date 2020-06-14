@@ -1,4 +1,4 @@
-(ns learn-clojure.linked-list
+(ns learn-clojure.LinkedList.linked-list 
   (:refer-clojure :exclude [next list empty?]))
 
 

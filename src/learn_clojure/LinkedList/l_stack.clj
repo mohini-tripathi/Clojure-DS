@@ -2,9 +2,11 @@
   (:refer-clojure :exclude [empty? peek Stack pop push reverse])
   
   (:require 
-   [learn-clojure.linked-list :as list]))
+   [learn-clojure.LinkedList.linked-list :as list]))
 
-(defprotocol Stack
+(defprotocol LStack
+  "protocol for LStack"
+  
   (empty? 
    [stack]
     "Returns true if stack is empty")
@@ -30,8 +32,8 @@
     "Returns the vector of the stack values"))
 
 
-(defrecord StackImpl [_list]
-  Stack
+(defrecord LStackImpl [_list]
+  LStack
   
   (empty?
     [_]
@@ -42,19 +44,19 @@
     (let [head-node (list/head _list)]
       (if (nil? head-node)
         nil
-        (list/data (list/head _list)))))
+        (list/data head-node))))
 
   (push
     [_ val]
-    (->StackImpl (list/prepend _list val)))
+    (->LStackImpl (list/prepend _list val)))
 
   (pop
     [_]
-    (->StackImpl (list/delete-head _list)))
+    (->LStackImpl (list/delete-head _list)))
 
   (reverse
     [_]
-    (->StackImpl (list/reverselist _list)))
+    (->LStackImpl (list/reverselist _list)))
 
   (stack->vector
     [_]
@@ -63,4 +65,4 @@
 
 (defn stack
   [& args]
-  (->StackImpl (apply list/linkedlist args)))
+  (->LStackImpl (apply list/linkedlist args)))
