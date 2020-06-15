@@ -62,6 +62,7 @@
       (if (nil? head-node)
         (println "Queue is empty")
         (list/delete-head _list))))
+  
   (enqueue
     [_list val]
     (let [new-node (list/node val)
@@ -80,6 +81,13 @@
     [_list]
     (list/list->vector _list)))
 
+(defn queue [& args]
+  (->LQueueImpl (apply list/linkedlist args)))
+
+
+(def q1 (queue 1 2 4))
+
+(enqueue q1 5)
 ;;Algorithm for enqueue
 ;;Constraint: We can't use append
 ;;STEP-1 Take input i.e list and value

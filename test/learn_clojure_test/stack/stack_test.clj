@@ -1,4 +1,4 @@
-(ns learn-clojure.stack-test
+(ns learn-clojure-test.stack.stack-test
   (:require
    [clojure.test :refer [deftest is testing]]
    [learn-clojure.stack :as stack]))

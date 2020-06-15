@@ -1,4 +1,4 @@
-(ns learn-clojure.queue-test
+(ns learn-clojure-test/queue.queue-test
   (:require
    [clojure.test :refer [deftest is testing]]
    [learn-clojure.queue :as queue]))

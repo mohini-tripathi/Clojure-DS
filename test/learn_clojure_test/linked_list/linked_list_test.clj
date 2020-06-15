@@ -1,14 +1,21 @@
-(ns learn-clojure.linked-list-test
+(ns learn-clojure-test.linked-list.linked-list-test
   (:require
    [clojure.test :refer [deftest are testing]]
    [learn-clojure.linked-list :as list]))
 
 (deftest test-linkedlist
-  (let [list-1 (list/linkedlist)]
+  (let [node-data-1 1
+        node-data-2 4
+        list-1 (list/linkedlist)
+        list-2 (list/linkedlist 1 2 3 4)]
     (testing "Empty Linked List"
       (are [expected got] (= expected got)
         nil (list/head list-1)
-        nil (list/tail list-1)))))
+        nil (list/tail list-1)))
+    (testing "Non empty linked list"
+      (are [expected got] (= expected got)
+        node-data-1 (list/head list-2)
+        node-data-2 (list/tail list-2)))))
 
 (deftest test-linkedlist-insert
   (let [node-data-1 1

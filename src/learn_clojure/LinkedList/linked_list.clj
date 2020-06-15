@@ -146,6 +146,14 @@
      (if (= (next new-node) nil)
        (println "End of list")
        (recur (next new-node)))))
+  
+  (reverse 
+   [list]
+   (loop [curr (head list)
+          new-list (->ListImpl nil nil)]
+     (if (nil? list)
+       new-list
+       (recur (curr (next curr) (prepend new-list curr))))))
 
   (list->vector 
    [list]
@@ -172,4 +180,7 @@
       (recur (first nxt)
              (rest nxt)
              (prepend new-lst curr)))))))
+
+(def l1 (linkedlist 1 2 3))
+(reverselist l1)
 
