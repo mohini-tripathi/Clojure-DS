@@ -141,28 +141,3 @@
                          (list/head)
                          (list/data))))))
 
-(deftest test-linkedlist-reverselist
-  (let [node-data-1 1
-        node-data-2 2
-        node-data-3 3
-        node-data-4 4
-        list-1 (list/linkedlist)
-        list-2 (-> list-1
-                   (list/prepend node-data-1)
-                   (list/prepend node-data-2)
-                   (list/prepend node-data-3))
-        list-3 (-> list-1 ;; 1->2->3
-                   (list/append node-data-1)
-                   (list/append node-data-2)
-                   (list/append node-data-3))
-        list-4 (-> list-1 ;; 2->1->3->4
-                   (list/prepend node-data-1)
-                   (list/prepend node-data-2)
-                   (list/append node-data-3)
-                   (list/append node-data-4))]
-    (testing "revering the list"
-      (are [expected got] (= expected got)
-        list-1 (list/reverselist (list/reverselist list-1))
-        list-2 (list/reverselist (list/reverselist list-2))
-        list-3 (list/reverselist (list/reverselist list-3))
-        list-4 (list/reverselist (list/reverselist list-4))))))
