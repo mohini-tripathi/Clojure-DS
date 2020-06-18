@@ -1,4 +1,4 @@
-(ns learn-clojure.l-stack
+(ns learn-clojure.LinkedList.l-stack
   (:refer-clojure :exclude [empty? peek Stack pop push reverse])
   
   (:require 
@@ -22,6 +22,10 @@
   (pop 
    [stack]
     "Removes the element from the top of the stack")
+  
+  (traverse
+   [stack]
+   "traverses the stack")
   
   (reverse 
    [stack]
@@ -53,6 +57,10 @@
   (pop
     [_]
     (->LStackImpl (list/delete-head _list)))
+  
+  (traverse
+   [_]
+   (->LStackImpl (list/traverse _list)))
 
   (reverse
     [_]

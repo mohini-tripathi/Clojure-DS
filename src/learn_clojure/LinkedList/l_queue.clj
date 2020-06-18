@@ -2,7 +2,7 @@
   (:refer-clojure :exclude [empty?])
 
   (:require
-   [learn-clojure.LinkedList.linked-list :as list]))
+   [learn-clojure.LinkedList.l-stack :as stack]))
 
 (defprotocol LQueue
   "Protocol for LQueue"
@@ -31,63 +31,64 @@
    [queue] 
    "Returns the values of queue")
   
+  (reverse
+   [queue]
+   "Return the values in reversed form")
+  
   (queue->vector
    [queue]
    "Returns vector from queue"))
 
-(defrecord LQueueImpl [_list]
+(defrecord LQueueImpl [front back]
   LQueue
   
   (empty?
-    [_list]
-    (list/empty? _list))
+    [_]
+    (stack/empty? front))
   
   (peek-top 
-    [_list]
-    (let [head-node (list/head _list)]
-      (if (nil? head-node)
+    [_]
+      (if (nil? front)
         nil
-        (list/data head-node))))
+        (stack/peek front)))
   
   (peek-bottom
-    [_list]
-    (let [tail-node (list/tail _list)]
-      (if (nil? tail-node)
-        nil
-        (list/data tail-node))))
+    [_]
+    (if (stack/empty? front)
+      (->LQueueImpl (stack/stack) (stack/pop (stack/reverse back)))
+      (->LQueueImpl back (stack/peek front))))
   
   (dequeue
-    [_list]
-    (let [head-node (list/head _list)]
-      (if (nil? head-node)
-        (println "Queue is empty")
-        (list/delete-head _list))))
+    [_]
+    (if (stack/empty? front)
+      (->LQueueImpl (stack/stack) (stack/pop (stack/reverse back)))
+      (->LQueueImpl back (stack/pop front))))
   
   (enqueue
-    [_list val]
-    (let [new-node (list/node val)
-          rev-list (list/reverselist _list)]
-      (if (nil? new-node)
-        (println "Queue is empty")
-        (list/reverselist (list/prepend rev-list new-node)))))
-  
-  ; O(2n) operation)
-  
+    [_ val]
+    (->LQueueImpl (stack/push back val) front))
+    
   (traverse 
-    [_list]
-    (list/traverse _list))
+    [_]
+    (stack/traverse front))
+  
+  (reverse
+   [_]
+   (stack/reverse front))
   
   (queue->vector
     [_list]
-    (list/list->vector _list)))
+    (stack/stack->vector front)))
 
-(defn queue [& args]
-  (->LQueueImpl (apply list/linkedlist args)))
+(defn queue
+  [& args]
+  (->LQueueImpl (apply stack/stack args) (stack/stack)))
 
 
 (def q1 (queue 1 2 4))
 
 (enqueue q1 5)
+
 ;;Algorithm for enqueue
 ;;Constraint: We can't use append
 ;;STEP-1 Take input i.e list and value

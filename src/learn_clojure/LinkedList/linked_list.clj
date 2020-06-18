@@ -147,13 +147,13 @@
        (println "End of list")
        (recur (next new-node)))))
   
-  (reverse 
+  (reverselist
    [list]
    (loop [curr (head list)
-          new-list (->ListImpl nil nil)]
-     (if (nil? list)
-       new-list
-       (recur (curr (next curr) (prepend new-list curr))))))
+          flist (->ListImpl nil nil)]
+     (if (nil? curr)
+       flist
+       (recur (next curr) (prepend flist (data curr))))))
 
   (list->vector 
    [list]
