@@ -1,4 +1,4 @@
-(ns learn-clojure.queue
+(ns learn-clojure.Queue.queue
   (:refer-clojure :exclude [push pop peek empty?]))
 
 (defprotocol Queue

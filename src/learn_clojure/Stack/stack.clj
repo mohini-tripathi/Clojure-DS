@@ -1,4 +1,4 @@
-(ns learn-clojure.stack
+(ns learn-clojure.Stack.stack
   (:refer-clojure :exclude [push pop peek empty?]))
 
 (defprotocol Stack

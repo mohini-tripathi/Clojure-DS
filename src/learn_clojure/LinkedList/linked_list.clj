@@ -181,6 +181,9 @@
              (rest nxt)
              (prepend new-lst curr)))))))
 
-(def l1 (linkedlist 1 2 3))
-(reverselist l1)
+(def n1 (node 1))
+(def n2 (node 2))
+(def n3 (node 3))
+(print (linkedlist n1 n2 n3))
+
 

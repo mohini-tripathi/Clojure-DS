@@ -1,11 +1,9 @@
 (ns learn-clojure-test.stack.stack-test
   (:require
    [clojure.test :refer [deftest is testing]]
-   [learn-clojure.stack :as stack]))
+   [learn-clojure.Stack.stack :as stack]))
 
-(deftest sample-test
-  (testing "abs"
-    (is (= (+ 2 3) 5))))
+
 
 
 (deftest stack-impl

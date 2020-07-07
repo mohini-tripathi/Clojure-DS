@@ -1,5 +1,6 @@
+
 (ns learn-clojure.LinkedList.l-queue
-  (:refer-clojure :exclude [empty?])
+  (:refer-clojure :exclude [empty? reverse])
 
   (:require
    [learn-clojure.LinkedList.l-stack :as stack]))
