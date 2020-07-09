@@ -56,8 +56,8 @@
   (peek-bottom
     [_]
     (if (stack/empty? front)
-      (->LQueueImpl (stack/stack) (stack/pop (stack/reverse back)))
-      (->LQueueImpl back (stack/peek front))))
+      nil
+      (stack/peek (stack/reverse front))))
   
   (dequeue
     [_]
@@ -86,9 +86,7 @@
   (->LQueueImpl (apply stack/stack args) (stack/stack)))
 
 
-(def q1 (queue 1 2 4))
-
-(enqueue q1 5)
+(def q1 (queue))
 
 ;;Algorithm for enqueue
 ;;Constraint: We can't use append
