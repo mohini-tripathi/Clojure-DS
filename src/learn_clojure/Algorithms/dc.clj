@@ -14,6 +14,7 @@
 (defprotocol dca
   "Protocol for Dynamic Connectivity Algorithm"
   
+  
   (union
    [_]
    "Returns a set of inputs")
@@ -22,13 +23,6 @@
    [_]
    "Returns true if all the number is in a set"))
 
-(defrecord cdaImpl [& val]
-  dca
-  
-  (union
-   [_]
-   #{args})
-  
-  (connected? 
-   [_]))
 
+
+(random-objects 10)
