@@ -19,7 +19,7 @@
 ;;    [& args]
 ;;    "Returns a set of inputs")
   
-;;   (connnected?
+;;   (connected?
 ;;    [& args]
 ;;    "Returns true if all the number is in a set"))
 
@@ -29,7 +29,7 @@
 ;;   (connect
 ;;    [& args])
   
-;;   (connnected?
+;;   (connected?
 ;;    [& args]))
 
 (defn connect
@@ -43,8 +43,10 @@
       )))
 
 
-;; (defn connnected?
-;;   [& args]
-;;   (let [new-set (set args)]))
+(defn connected?
+  [& args]
+  (let [obj (set (random-objects 10))]
+    (= true (set/subset? (set #{args}) obj))))
 
-(connect 1 7 8)
+(connect 1 2 3)
+(connected? 1 2 3)
