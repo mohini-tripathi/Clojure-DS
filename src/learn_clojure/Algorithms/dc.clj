@@ -39,7 +39,7 @@
         diff (set/difference obj new-set)]
     (if (= true (set/intersection obj new-set))
       (conj diff new-set)
-      (print "404"))))
+      (print "object not found"))))
 
 ;; (defn connnected?
 ;;   [& args]
