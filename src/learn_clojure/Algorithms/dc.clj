@@ -37,9 +37,10 @@
   (let [obj (set (random-objects 10))
         new-set (set args)
         diff (set/difference obj new-set)]
-    (if (= true (set/intersection obj new-set))
-      (conj diff new-set)
-      (print "object not found"))))
+    (if (= nil (set/intersection obj new-set))
+      (print "object not found")
+      (conj diff new-set))))
+
 
 ;; (defn connnected?
 ;;   [& args]
