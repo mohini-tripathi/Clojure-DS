@@ -43,10 +43,4 @@
       )))
 
 
-(defn connected?
-  [& args]
-  (let [obj (set (random-objects 10))]
-    (= true (set/subset? (set #{args}) obj))))
-
 (connect 1 2 3)
-(connected? 1 2 3)
