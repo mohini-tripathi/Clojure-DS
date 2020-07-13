@@ -144,7 +144,7 @@
    (loop [new-node (head list)]
      (println (data new-node))
      (if (= (next new-node) nil)
-       ()
+       nil
        (recur (next new-node)))))
   
   (reverselist
@@ -184,6 +184,12 @@
 (def n1 (node 1))
 (def n2 (node 2))
 (def n3 (node 3))
- (def f1 (linkedlist 1 2 3))
-(traverse f1)
-#learn_clojure.LinkedList.linked_list.ListImpl{:_head #learn_clojure.LinkedList.linked_list.NodeImpl{:_data 1, :_next #learn_clojure.LinkedList.linked_list.NodeImpl{:_data 2, :_next #learn_clojure.LinkedList.linked_list.NodeImpl{:_data 3, :_next nil}}}, :_tail #learn_clojure.LinkedList.linked_list.NodeImpl{:_data 3, :_next nil}}
+(def f1 (linkedlist 1 2 3))
+
+(append (append f1 n1) n3)
+
+(defn test-me
+  [obj & args]
+  (set args))
+(def n [1 2 3])
+(test-me n 4 5 6)
