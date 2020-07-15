@@ -2,7 +2,9 @@
 ;; **************************************************
 
 
-(ns learn-clojure.Algorithms.dc)
+(ns learn-clojure.Algorithms.dc
+  (:require
+  [clojure.set :as set]))
 
 
 (defprotocol DC
@@ -12,15 +14,24 @@
 (defrecord DCImpl [components]
   DC
   (connect 
-   [_ source target])
-
+    [_ source target]
+    (let [new-set #{source target}
+          new-list (filter (fn
+                             [item]
+                             (empty? (set/intersection item new-set))) components)]
+      (->DCImpl (conj new-list new-set))))
+  
+  ;;input ({1} {2} {3} {4} {5} {6})
+  ;;output (connect c1 1 2) gives 
+  ;;({1 2} {3} {4} {5} {6} )
+  
   (connected?
-    [_ source]
+    [_ source target]
     (loop [curr (first components)
            res (rest components)]
       (if (nil? curr)
         false
-        (if (and (contains? curr source))
+        (if (and (contains? curr source) (contains? curr target))
           true
           (recur (first res) (rest res)))))))
 
@@ -32,4 +43,9 @@
 
 (def c1 (connected-components 1 2 3 4 5))
 
-(connected? c1 1 2)
+(defn b 
+  []
+  (filter (fn
+          [item]
+          (empty? (set/intersection item #{1 2}))) '(#{1} #{2} #{3} #{4})))
+(connect (connect (connect c1 1 2) 3 4) 3 5)
