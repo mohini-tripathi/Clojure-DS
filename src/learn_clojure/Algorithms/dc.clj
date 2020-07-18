@@ -23,11 +23,11 @@
                       (if (or (contains? curr source) (contains? curr target))
                         (recur (first res) (rest res) (set/union new-lst curr))
                         (recur (first res) (rest res) new-lst))))
-          
+
           new-list (filter (fn
                              [item]
                              (empty? (set/intersection item new-set))) components)]
-      
+
       (->DCImpl (conj new-list new-set))))
 
 
@@ -50,4 +50,4 @@
 (def c1 (connected-components 1 2 3 4 5))
 
 
-c1
+
