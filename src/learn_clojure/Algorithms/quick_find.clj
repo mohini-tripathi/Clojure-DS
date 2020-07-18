@@ -29,10 +29,8 @@
   (let [ids (into [] (map (fn [item] item) args))]
     (->QuickFind ids)))
 
-(def comp-1 (connected-ids 0 1 2 3 4 5 6 7 8))
+(def obj (connected-ids 0 1 2 3 4 5 6 7 8))
 
-comp-1
 
-(connected? 
- (connect 
-  (connect comp-1 1 2) 2 3) 1 7)
+
+(connected? (connect (connect(connect obj 1 2) 2 3) 3 7) 1 5)
