@@ -15,12 +15,7 @@
   ; Input [1 2 3 4]
   ; output [2 2 3 4]
 
-  (root
-   [_ idx]
-   (loop [iter 0
-          curr (first components)
-          res (rest components)]
-     (if )))
+
 
   (connected?
     [this source target]
