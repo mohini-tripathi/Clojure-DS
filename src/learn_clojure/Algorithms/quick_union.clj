@@ -1,36 +1,51 @@
 (ns lean-clojure.Algorithms.quick-union)
 
-(defprotocol QF
-  (connect [this source target])
-  (connected? [this source target])
-  (root [this item]))
+(defprotocol QuickUnion
+  (connect
+    [this source target])
 
-(defrecord QFImpl [components]
-  QF
+  (connected?
+    [this source target])
+
+  (root
+    [this item]))
+
+
+(defrecord QuickUnionImpl [components]
+  QuickUnion
+
+ (root
+  [_ item]
+  (loop [curr (components item)]
+    (if (= curr item)
+      curr
+      (recur (components curr)))))
+
+
+
   (connect
     [this source target]
     (let [s-root (root this source)
           t-root (root this target)]
-      (->QFImpl (assoc components s-root t-root))))
-  ; Input [1 2 3 4]
-  ; output [2 2 3 4]
-
-
+      (->QuickUnionImpl (assoc components s-root t-root))))
 
   (connected?
     [this source target]
     (= (root this source) (root this target))))
 
+
+
 (defn connected-components
   [& args]
   (let [components (into [] (map (fn [item] item) args))]
-    (->QFImpl components)))
+    (->QuickUnionImpl components)))
 
 
 (def c1 (connected-components 0 1 2 3 4))
+(connect c1 1 2)
+(root (connect c1 1 2) 1)
 
 
-(connected? c1 1 2)
-(connected? (connect c1 1 2) 1 2)
-(root c1 0)
-(connect (connect c1 0 1) 1 2)
+
+ 
+
