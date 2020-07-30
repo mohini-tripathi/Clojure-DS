@@ -1,4 +1,4 @@
-(ns lean-clojure.Algorithms.quick-union)
+(ns learn-clojure.Algorithms.quick-union)
 
 (defprotocol QuickUnion
   (connect
@@ -20,11 +20,14 @@
     (if (= curr item)
       curr
       (recur (components curr)))))
+  
+  
 
 
 
   (connect
     [this source target]
+   
     (let [s-root (root this source)
           t-root (root this target)]
       (->QuickUnionImpl (assoc components s-root t-root))))
@@ -42,10 +45,6 @@
 
 
 (def c1 (connected-components 0 1 2 3 4))
-(connect c1 1 2)
-(root (connect c1 1 2) 1)
-
-
-
- 
+(def c2 (connect (connect (connect c1 1 2) 2 3) 2 4))
+c2
 
