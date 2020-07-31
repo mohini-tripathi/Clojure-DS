@@ -4,7 +4,9 @@
 ; Please see https://calva.io/output/ for more info.
 ; Happy coding! ♥️
 
+
 ; Jacking in...
+
 ; Hooking up nREPL sessions...
 ; Connected session: clj
 ; TIPS: You can edit the contents here. Use it as a REPL if you like.
@@ -14,4 +16,3 @@
 clj::user=> 
 ; Debugger initialized
 ; Jack-in done.
-; Evaluating file: quick_union.clj
