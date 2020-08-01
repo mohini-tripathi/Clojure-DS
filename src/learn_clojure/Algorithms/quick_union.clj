@@ -6,6 +6,9 @@
 
   (connected?
     [this source target])
+  
+  (size
+   [this item])
 
   (root
     [this item]))
@@ -21,11 +24,17 @@
       (if (= i curr)
         curr
         (recur (components curr) (inc i)))))
-
-
-
-
-
+  ;; (size
+  ;;  [_ item]
+  ;;  (loop [curr (first components)
+  ;;         res (rest components)
+  ;;         iter 1]
+  ;;    (if (nil? curr)
+  ;;      iter
+  ;;      (if (= curr (root components item))
+  ;;      (recur (first res) (rest res) (inc iter))
+  ;;      (recur (first res) (rest res) iter)))))
+  
   (connect
     [this source target]
 
@@ -46,5 +55,17 @@
 
 
 (def c1 (connected-components 0 1 2 3 4))
-(root (connect (connect (connect c1 1 2) 2 3) 1 4)
- 3)
+(def c2 (connect (connect c1 1 2) 2 3))
+
+  (defn size?
+   [vec item]
+   (loop [curr (first vec)
+          res (rest vec)
+          freq 0
+          id 0]
+     (if (nil? curr)
+       freq
+       (if (= (root vec id) (root vec item))
+         (recur (first res) (rest res) (inc freq) (inc id))
+         (recur (first res) (rest res) freq (inc id))))))
+(root c2 4)
