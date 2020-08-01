@@ -4,7 +4,6 @@
 ; Please see https://calva.io/output/ for more info.
 ; Happy coding! ♥️
 
-
 ; Jacking in...
 
 ; Hooking up nREPL sessions...
@@ -16,3 +15,151 @@
 clj::user=> 
 ; Debugger initialized
 ; Jack-in done.
+; Evaluating file: quick_union.clj
+#learn_clojure.Algorithms.quick_union.QuickUnionImpl{:components [0 2 2 3 4]}
+clj::user=> 
+; Evaluating file: quick_union.clj
+#learn_clojure.Algorithms.quick_union.QuickUnionImpl{:components [0 2 2 3 4]}
+clj::user=> 
+{:components [0 2 2 3 4]}
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+#learn_clojure.Algorithms.quick_union.QuickUnionImpl{:components [0 2 3 3 4]}
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+1
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+2
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+2
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+2
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+3
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+; Execution error (ClassCastException) at learn-clojure.Algorithms.quick-union/eval16965 (REPL:1).
+; learn_clojure.Algorithms.quick_union.QuickUnionImpl cannot be cast to clojure.lang.IFn
+; Evaluation of file quick_union.clj failed: class clojure.lang.Compiler$CompilerException
+[{:file "Compiler.java" :line 3707 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 457 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7182 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7636 :method "load" :flags [:tooling :java]}
+ {:file "NO_SOURCE_FILE" :line 1 :fn "eval16965"  :method "invokeStatic" :flags [:project :repl :clj]}
+ {:file "NO_SOURCE_FILE" :line 1 :fn "eval16965"  :method "invoke" :flags [:dup :project :repl :clj]}
+ {:file "Compiler.java" :line 7177 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7132 :method "eval" :flags [:dup :tooling :java]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3214" :fn "eval"  :method "invokeStatic" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3210" :fn "eval"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print"  :method "invoke" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl"  :method "invokeStatic" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:368" :fn "repl"  :method "doInvoke" :flags [:clj]}
+ {:file "RestFn.java" :line 1523 :method "invoke" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:79" :fn "evaluate"  :method "invokeStatic" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:55" :fn "evaluate"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:142" :fn "interruptible-eval/fn/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:171" :fn "session-exec/main-loop/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:170" :fn "session-exec/main-loop"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "Thread.java" :line 748 :method "run" :flags [:java]}]
+clj::learn-clojure.Algorithms.quick-union=> 
+; Execution error (IllegalArgumentException) at learn-clojure.Algorithms.quick-union/eval16990$fn$G (quick_union.clj:3).
+; No implementation of method: :root of protocol: #'learn-clojure.Algorithms.quick-union/QuickUnion found for class: learn_clojure.Algorithms.quick_union.QuickUnionImpl
+[{:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core_deftype.clj:583" :fn "-cache-protocol-fn"  :method "invokeStatic" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core_deftype.clj:575" :fn "-cache-protocol-fn"  :method "invoke" :flags [:clj]}
+ {:file "file:/home/mohini/Work/Projects/Clojure-DS/src/learn_clojure/Algorithms/quick_union.clj:3" :fn "eval16990/fn/G"  :method "invoke" :flags [:project :clj]}
+ {:file "NO_SOURCE_FILE" :line 50 :fn "eval17093"  :method "invokeStatic" :flags [:project :repl :clj]}
+ {:file "NO_SOURCE_FILE" :line 50 :fn "eval17093"  :method "invoke" :flags [:dup :project :repl :clj]}
+ {:file "Compiler.java" :line 7177 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7132 :method "eval" :flags [:dup :tooling :java]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3214" :fn "eval"  :method "invokeStatic" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3210" :fn "eval"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print"  :method "invoke" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl"  :method "invokeStatic" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:368" :fn "repl"  :method "doInvoke" :flags [:clj]}
+ {:file "RestFn.java" :line 1523 :method "invoke" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:79" :fn "evaluate"  :method "invokeStatic" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:55" :fn "evaluate"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:142" :fn "interruptible-eval/fn/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:171" :fn "session-exec/main-loop/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:170" :fn "session-exec/main-loop"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "Thread.java" :line 748 :method "run" :flags [:java]}]
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+; Execution error (ClassCastException) at learn-clojure.Algorithms.quick-union/eval17124 (REPL:1).
+; learn_clojure.Algorithms.quick_union.QuickUnionImpl cannot be cast to clojure.lang.IFn
+; Evaluation of file quick_union.clj failed: class clojure.lang.Compiler$CompilerException
+[{:file "Compiler.java" :line 3707 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 457 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7182 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7636 :method "load" :flags [:tooling :java]}
+ {:file "NO_SOURCE_FILE" :line 1 :fn "eval17124"  :method "invokeStatic" :flags [:project :repl :clj]}
+ {:file "NO_SOURCE_FILE" :line 1 :fn "eval17124"  :method "invoke" :flags [:dup :project :repl :clj]}
+ {:file "Compiler.java" :line 7177 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7132 :method "eval" :flags [:dup :tooling :java]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3214" :fn "eval"  :method "invokeStatic" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3210" :fn "eval"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print"  :method "invoke" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl"  :method "invokeStatic" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:368" :fn "repl"  :method "doInvoke" :flags [:clj]}
+ {:file "RestFn.java" :line 1523 :method "invoke" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:79" :fn "evaluate"  :method "invokeStatic" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:55" :fn "evaluate"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:142" :fn "interruptible-eval/fn/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:171" :fn "session-exec/main-loop/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:170" :fn "session-exec/main-loop"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "Thread.java" :line 748 :method "run" :flags [:java]}]
+clj::learn-clojure.Algorithms.quick-union=> 
+; Execution error (ClassCastException) at nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:79).
+; learn_clojure.Algorithms.quick_union.QuickUnionImpl cannot be cast to clojure.lang.IFn
+[{:file "Compiler.java" :line 3707 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 457 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7182 :method "eval" :flags [:tooling :java]}
+ {:file "Compiler.java" :line 7132 :method "eval" :flags [:dup :tooling :java]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3214" :fn "eval"  :method "invokeStatic" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/core.clj:3210" :fn "eval"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:437" :fn "repl/read-eval-print"  :method "invoke" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl/fn"  :method "invoke" :flags [:clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:458" :fn "repl"  :method "invokeStatic" :flags [:dup :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar!/clojure/main.clj:368" :fn "repl"  :method "doInvoke" :flags [:clj]}
+ {:file "RestFn.java" :line 1523 :method "invoke" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:79" :fn "evaluate"  :method "invokeStatic" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:55" :fn "evaluate"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/interruptible_eval.clj:142" :fn "interruptible-eval/fn/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:171" :fn "session-exec/main-loop/fn"  :method "invoke" :flags [:tooling :clj]}
+ {:file "jar:file:/home/mohini/.m2/repository/nrepl/nrepl/0.6.0/nrepl-0.6.0.jar!/nrepl/middleware/session.clj:170" :fn "session-exec/main-loop"  :method "invoke" :flags [:tooling :clj]}
+ {:file "AFn.java" :line 22 :method "run" :flags [:java]}
+ {:file "Thread.java" :line 748 :method "run" :flags [:java]}]
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+#learn_clojure.Algorithms.quick_union.QuickUnionImpl{:components [0 2 2 3 4]}
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+#learn_clojure.Algorithms.quick_union.QuickUnionImpl{:components [0 2 3 3 4]}
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+#learn_clojure.Algorithms.quick_union.QuickUnionImpl{:components [0 2 3 4 4]}
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+4
+clj::learn-clojure.Algorithms.quick-union=> 
+; Evaluating file: quick_union.clj
+4
+clj::learn-clojure.Algorithms.quick-union=> 
