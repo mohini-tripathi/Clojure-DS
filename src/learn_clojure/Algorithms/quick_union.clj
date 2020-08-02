@@ -55,8 +55,7 @@
 
 
 (def c1 (connected-components 0 1 2 3 4))
-(def c2 (connect (connect c1 1 2) 2 3))
-
+(connect c1 1 2)
   (defn size?
    [vec item]
    (loop [curr (first vec)
@@ -68,4 +67,4 @@
        (if (= (root vec id) (root vec item))
          (recur (first res) (rest res) (inc freq) (inc id))
          (recur (first res) (rest res) freq (inc id))))))
-(root c2 4)
+(size? c1 2)
