@@ -6,15 +6,12 @@
 
   (connected?
     [this source target])
-  
-  (size
-   [this item])
 
   (root
     [this item]))
 
 
-(defrecord QuickUnionImpl [components]
+(defrecord QuickUnionImpl [components sizes]
   QuickUnion
 
   (root
@@ -24,23 +21,21 @@
       (if (= i curr)
         curr
         (recur (components curr) (inc i)))))
-  ;; (size
-  ;;  [_ item]
-  ;;  (loop [curr (first components)
-  ;;         res (rest components)
-  ;;         iter 1]
-  ;;    (if (nil? curr)
-  ;;      iter
-  ;;      (if (= curr (root components item))
-  ;;      (recur (first res) (rest res) (inc iter))
-  ;;      (recur (first res) (rest res) iter)))))
-  
+  ;; PROBLEM OF COUNTING ITERATIONS HERE
+  ;; Let tree be 3<-2<-1
+  ;; item as 1 would return 3
+  ;;  (correct)
+  ;; item as 2/3 would return 2/1 (incorrect)
+
   (connect
     [this source target]
 
     (let [s-root (root this source)
           t-root (root this target)]
-      (->QuickUnionImpl (assoc components s-root t-root))))
+      (cond
+        (> (sizes s-root) (sizes t-root)) (->QuickUnionImpl (assoc components s-root t-root) (assoc sizes t-root (+ (sizes t-root) (sizes s-root))))
+        (< (sizes s-root) (sizes t-root)) (->QuickUnionImpl (assoc components t-root s-root) (assoc sizes s-root (+ (sizes t-root) (sizes s-root))))
+        (= (sizes s-root) (sizes t-root)) (->QuickUnionImpl (assoc components s-root t-root) (assoc sizes t-root (+ (sizes t-root) (sizes s-root)))))))
 
   (connected?
     [this source target]
@@ -48,23 +43,15 @@
 
 
 
+
 (defn connected-components
   [& args]
-  (let [components (into [] (map (fn [item] item) args))]
-    (->QuickUnionImpl components)))
-
+  (let [components (into [] (map (fn [item] item) args))
+        sizes (into [] (map (fn [_] 1) args))]
+    (->QuickUnionImpl components sizes)))
 
 (def c1 (connected-components 0 1 2 3 4))
-(connect c1 1 2)
-  (defn size?
-   [vec item]
-   (loop [curr (first vec)
-          res (rest vec)
-          freq 0
-          id 0]
-     (if (nil? curr)
-       freq
-       (if (= (root vec id) (root vec item))
-         (recur (first res) (rest res) (inc freq) (inc id))
-         (recur (first res) (rest res) freq (inc id))))))
-(size? c1 2)
+(def c2 (connect c1 1 2))
+(def c3 (connect c2 1 3))
+c3
+
