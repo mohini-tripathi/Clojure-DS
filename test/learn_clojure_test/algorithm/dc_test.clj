@@ -3,14 +3,6 @@
    [clojure.test :refer [deftest are testing]]
    [learn-clojure.Algorithms.dc :as dc]))
 
-(deftest connected-components
-  
-  (let [val-1 1
-        val-2 2
-        val-3 3]))
-
-
-
 (deftest DCImpl
   
 (let [val-1 1

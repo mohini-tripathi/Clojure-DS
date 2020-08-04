@@ -1,5 +1,5 @@
 (ns learn-clojure.LinkedList.linked-list 
-  (:refer-clojure :exclude [next list empty?]))
+  (:refer-clojure :exclude [next list empty? traverse]))
 
 
 (defprotocol Node
@@ -188,8 +188,3 @@
 
 (append (append f1 n1) n3)
 
-(defn test-me
-  [obj & args]
-  (set args))
-(def n [1 2 3])
-(test-me n 4 5 6)
