@@ -47,7 +47,10 @@
   (let [components (map (fn [item] #{item}) args)]
     (->DCImpl components)))
 
-(def c1 (connected-components 1 2 3 4 5))
-
-
+(def c1 (connected-components 0 1 2 3 4 5))
+(def c2 (connect c1 1 2))
+(def c3 (connect c2 2 3))
+(def c4 (connect c3 0 2))
+c4
+(connected? c3 1 3)
 
