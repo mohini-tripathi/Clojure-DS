@@ -34,7 +34,7 @@ To query about connectivity, we need to check whether the source, as well as tar
 
 We are done with both the methods, let us examine their complexity.
 
-####Complexity
+#### Complexity
 - Complexity for connected? Is the order of O(N) in the worst case since it will iterate over the individual elements of the components.
 - Complexity for connect would be O(2N)
 
