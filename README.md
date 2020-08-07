@@ -22,9 +22,7 @@ In Bad Implementation, non-connected objects will be represented as a collection
 Let us create an interface consisting of two methods -
 - connect - It is used to connect source and target.
 - connected? - It returns true if the source and target are connected.
-
 - Define a function connected-component which is supposed to return a list of disjoint sets of N number of arguments. The function would take N number of arguments and map each argument to a set disjointly, returning a list of them that is stored in the components. Constructor ->DCImpl is called to accept components to return to the record.
-
 - Define the connect method, it would take three arguments i.e components (the one we defined earlier), source, and target. We are supposed to connect the source and target, to achieve this, we can loop over the components to return a new set consisting of source and target. Furthermore, existing components must be filtered to remove the source and target in order to conjoin the new set. This would return   ( {object1} {object2} {source target} . . .) for ( {object1} {object2} {source} {target} . . .)
 
 
