@@ -45,7 +45,7 @@ Instead of using sets, we would be using vectors.
 Representing objects by indices makes it a lot easier to perform operations on them. Initially, values and indices of the vector are initiated to be the same, to connect source and target, the corresponding value of that index would be updated to be the same. For example, let the vector be [0 1 2 3 4] if the object corresponding to index 1 and index 2 is supposed to be connected, then the vector is updated as [0 2 2 3 4] or [0 1 1 3 4]. 
 Now, it can easily be queried whether two indices have the same value to check connectivity. This would reduce complexity for connected? to O(1), great!. Let’s proceed to implementation.
 Let’s define connected-components named as connected-ids here. We are supposed to return vector for N arguments, this can be achieved by mapping each item with provided arguments individually, then converting the list into a vector. The vector obtained can be stored in a variable and the constructor ->QuickFind must be called to return ids into the record.
-To implement connect -
+To implement connect :-
 - It will take three arguments, i.e ids, source, and target.
 - Store vector’s values corresponding to source and target in sID and tID
 - Loop over the ids (components) to find the value which is equal to sID and replace it with tID using Clojure’s assoc method. This would return a vector with the same value of source and target. Finally, return the new vector obtained.
