@@ -2,29 +2,31 @@
 
 (defprotocol BinarySearch 
  (b-search 
-   [this num]
-   "number supposed to be search"))
+   [_ num]
+   "number supposed to be searched"))
 
-(defrecord BinarySearchImpl [vec n]
+(defrecord BinarySearchImpl [vec]
   BinarySearch
 (b-search
  [_ num] 
-   (loop [last (- n 1)
-          mid (quot last 2)]
-       (if (or (= 0 mid) (= last mid))
-        false
-         (cond
+   (let [n (count vec)]
+     (loop [start 0
+            last (- n 1)
+            mid (quot last 2)]
+         (if (<= start last)
+           (cond
            (= num (vec mid)) true
-           (< num (vec mid)) (recur last (quot mid 2))
-           (> num (vec mid)) (recur last (quot (+ mid 1 last) 2)))))))
+           (< num (vec mid)) (recur start (- mid 1) (quot (+ start last) 2))
+           (> num (vec mid)) (recur (+ mid 1) last (quot (+ start last) 2)))
+           false)))
+ ))
 
 (defn sort-vector
   [& args]
-  (let [vec (into [] (sort args))
-        n (count args)]
-    (->BinarySearchImpl vec n)))
+  (let [vec (into [] (sort args))]
+    (->BinarySearchImpl vec)))
 
 
-(def l1 (sort-vector 12 13 14 15 16 17 18 19 20))
+(def l1 (sort-vector 12 32 43 54 65 78 98 9 12))
 l1
-(b-search l1 11)
+(b-search l1 98)
