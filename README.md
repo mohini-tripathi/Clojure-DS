@@ -4,6 +4,7 @@
 
 
 
+
 ### Introduction
 In Dynamic Connectivity, we are given a collection of objects which may vary from a small number of objects to more than thousands of them, in such a scenario it is required to find a path between two objects if they are connected. Dynamic Connectivity is used to determine information about connected components, we will be going through various algorithms and their implementation in Clojure which can perform operations like connecting objects together and finding whether two objects are connected. Our objective will be finding the best suitable algorithm with feasible complexity.
 Dynamic Connectivity Problem
@@ -76,3 +77,5 @@ This can furthermore be optimized by using path compression.
 
 ### Path Compression
 As we can observe root, it uses looping to figure out the root of an item. We are supposed to compress this path. Initially, the tree of the connected component would be like 1->2->3. To get to the root, we need to go through 2 other elements in this example. What if each connected item returns root itself? This would definitely reduce the time taken while finding the root. Thus, we used to reduce that time in the following change, now each item won’t be iterated and this will optimize the complexity furthermore.
+
+# Binary Search
