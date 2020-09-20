@@ -1,5 +1,6 @@
 
 ### Data Structure and Algorithm with Clojure
+
 #### Dynamic Connectivity
 
 Experience Report
